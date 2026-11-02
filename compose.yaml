@@ -1,0 +1,15 @@
+services:
+  ledgerly:
+    build: .
+    ports:
+      - "5101:5101"
+    environment:
+      PORT: "5101"
+      # Uncomment to keep data between restarts (the volume below must be enabled too).
+      # LEDGERLY_DATA_FILE: /data/ledgerly.json
+    # volumes:
+    #   - ledgerly-data:/data
+    restart: unless-stopped
+
+# volumes:
+#   ledgerly-data:
