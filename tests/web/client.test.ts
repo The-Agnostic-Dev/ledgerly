@@ -21,7 +21,7 @@ describe('api.deleteExpense cache invalidation', () => {
       if (url === '/api/expenses') {
         return jsonResponse([]);
       }
-      if (url === '/api/summary') {
+      if (url.startsWith('/api/summary')) {
         summaryCalls += 1;
         return jsonResponse({ total: summaryCalls * 100 });
       }
