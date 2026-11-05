@@ -27,7 +27,7 @@ export function ConfirmDialog({
         <button type="button" className="button secondary" onClick={onCancel}>
           Cancel
         </button>
-        <button type="button" className="button danger" disabled={busy} onClick={() => onConfirm}>
+        <button type="button" className="button danger" disabled={busy} onClick={onConfirm}>
           {confirmLabel}
         </button>
       </div>

@@ -93,7 +93,7 @@ export const api = {
 
   async deleteExpense(id: string): Promise<void> {
     await request<void>('DELETE', `/api/expenses/${id}`);
-    invalidate('/api/expenses');
+    invalidate('/api/expenses', '/api/summary');
   },
 
   async createCategory(input: CategoryInput): Promise<Category> {
