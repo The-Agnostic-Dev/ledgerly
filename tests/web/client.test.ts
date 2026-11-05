@@ -31,7 +31,7 @@ describe('api.deleteExpense cache invalidation', () => {
       throw new Error(`Unexpected fetch: ${url}`);
     });
 
-    await api.expenses();
+    await api.expenses({});
     const firstSummary = await api.summary('2026-05');
     expect(firstSummary).toEqual({ total: 100 });
     expect(summaryCalls).toBe(1);
