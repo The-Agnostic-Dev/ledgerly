@@ -32,13 +32,13 @@ describe('api.deleteExpense cache invalidation', () => {
     });
 
     await api.expenses();
-    const firstSummary = await api.summary();
+    const firstSummary = await api.summary('2026-05');
     expect(firstSummary).toEqual({ total: 100 });
     expect(summaryCalls).toBe(1);
 
     await api.deleteExpense('exp-1');
 
-    const secondSummary = await api.summary();
+    const secondSummary = await api.summary('2026-05');
     expect(secondSummary).toEqual({ total: 200 });
     expect(summaryCalls).toBe(2);
 
