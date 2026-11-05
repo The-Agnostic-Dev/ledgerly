@@ -1,12 +1,12 @@
 import { describe, it, expect, vi } from 'vitest';
-import { Children, isValidElement } from 'react';
+import { Children, isValidElement, type ReactNode } from 'react';
 import { ConfirmDialog } from '../../src/components/ConfirmDialog';
 
 type ButtonProps = {
   className?: string;
   onClick?: () => void;
   disabled?: boolean;
-  children?: unknown;
+  children?: ReactNode;
 };
 
 type ButtonNode = { props: ButtonProps };
