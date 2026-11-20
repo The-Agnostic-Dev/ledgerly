@@ -57,6 +57,25 @@ describe('expenses API', () => {
     expect(missing.status).toBe(404);
   });
 
+  it('saves a 250,000 NGN expense', async () => {
+    const expense = {
+      ...valid,
+      date: '2026-05-18',
+      description: 'Generator servicing',
+      amount: 250_000,
+      categoryId: 'cat-rent',
+    };
+
+    const created = await call(server.url, 'POST', '/api/expenses', expense);
+    expect(created.status).toBe(201);
+    expect(created.body.fields).toBeUndefined();
+    expect(created.body.amount).toBe(250_000);
+
+    const { body } = await call(server.url, 'GET', '/api/expenses?month=2026-05');
+    const saved = body.items.find((e: { description: string }) => e.description === 'Generator servicing');
+    expect(saved).toMatchObject(expense);
+  });
+
   it('rejects invalid input with field errors', async () => {
     const { status, body } = await call(server.url, 'POST', '/api/expenses', { ...valid, amount: -5, date: '2026-02-30' });
     expect(status).toBe(400);

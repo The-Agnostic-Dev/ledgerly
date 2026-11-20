@@ -3,7 +3,7 @@ import type { CategoryInput, Currency, ExpenseInput } from '../shared/types.ts';
 
 export type Result<T> = { ok: true; value: T } | { ok: false; errors: Record<string, string> };
 
-const MAX_AMOUNT = 100_000;
+const MAX_AMOUNT = 10_000_000;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const COLOR_RE = /^#[0-9a-fA-F]{6}$/;
 
