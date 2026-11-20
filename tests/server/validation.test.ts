@@ -14,6 +14,11 @@ describe('validateExpense', () => {
     expect(result.ok && result.value.amount).toBe(10.01);
   });
 
+  it.each([250_000, 350_000])('accepts large amounts such as %s', (amount) => {
+    const result = validateExpense({ ...base, amount });
+    expect(result).toEqual({ ok: true, value: { ...base, amount, notes: undefined } });
+  });
+
   it.each([0, -1, Number.NaN, '100'])('rejects amount %s', (amount) => {
     const result = validateExpense({ ...base, amount });
     expect(result.ok).toBe(false);
