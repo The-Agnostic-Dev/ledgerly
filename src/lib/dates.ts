@@ -22,7 +22,7 @@ export function shiftMonth(month: string, delta: number): string {
 /** "2026-03" becomes "March 2026". */
 export function monthLabel(month: string, style: 'long' | 'short' = 'long'): string {
   const [year, m] = month.split('-').map(Number);
-  return new Date(year, m, 1).toLocaleDateString('en-NG', { month: style, year: 'numeric' });
+  return new Date(year, m - 1, 1).toLocaleDateString('en-NG', { month: style, year: 'numeric' });
 }
 
 /** "2026-03-07" becomes "7 Mar 2026". */
